@@ -1,0 +1,289 @@
+
+
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>Nails by Tee | Find Your Nail Vibe</title>
+
+<style>
+
+body{margin:0;background:#fff8f8;color:#492438;font-family:Arial,sans-serif}
+
+header{text-align:center;background:#f7dce5;padding:28px 15px}
+
+h1,h2,h3{font-family:Georgia,serif}
+
+h1{font-size:38px}main{max-width:850px;margin:auto;padding:18px}
+
+section,.card{background:white;padding:20px;margin:16px 0;border-radius:18px;border:1px solid #f0d2df}
+
+button{background:#a23c60;color:white;border:0;padding:13px 18px;border-radius:25px;font-weight:bold;cursor:pointer}
+
+select,textarea{display:block;width:100%;padding:12px;margin:8px 0 18px;border:1px solid #ddb8c8;border-radius:10px;box-sizing:border-box;font-size:16px}
+
+.price{font-size:24px;color:#a23c60;font-weight:bold}
+
+.art{padding:35px;text-align:center;border-radius:12px;background:linear-gradient(135deg,#64152f,#dba5b9);color:white;font-size:36px}
+
+.small{color:#765969;font-size:14px}.hidden{display:none}
+
+</style>
+
+</head>
+
+<body>
+
+<header>
+
+<h1>Nails by Tee 💗</h1>
+
+<p>Press-ons that match your personality.</p>
+
+<button onclick="document.getElementById('quiz').scrollIntoView()">Find My Nail Vibe</button>
+
+</header>
+
+<main>
+
+<section id="quiz">
+
+<h2>Discover Your Nail Personality ✨</h2>
+
+<p>Tell us your vibe and get a nail recommendation plus a custom design idea.</p>
+
+<form id="form">
+
+<label>What's your vibe?</label>
+
+<select id="mood">
+
+<option value="romantic">Soft and romantic</option>
+
+<option value="luxury">Rich and luxurious</option>
+
+<option value="bold">Bold and confident</option>
+
+<option value="playful">Cute and playful</option>
+
+<option value="minimal">Clean and minimal</option>
+
+</select>
+
+<label>Favourite colours?</label>
+
+<select id="colour">
+
+<option>Burgundy and nude</option>
+
+<option>Pink and white</option>
+
+<option>Black and silver</option>
+
+<option>Brown and gold</option>
+
+<option>Surprise me</option>
+
+</select>
+
+<label>Preferred shape?</label>
+
+<select id="shape">
+
+<option>Stiletto</option><option>Almond</option>
+
+<option>Coffin</option><option>Square</option>
+
+</select>
+
+<label>Preferred length?</label>
+
+<select id="length">
+
+<option>Short</option><option>Medium</option>
+
+<option>Long</option><option>Extra long</option>
+
+</select>
+
+<label>Describe your dream nails (optional)</label>
+
+<textarea id="details" placeholder="Pearls, 3D flowers, birthday nails..."></textarea>
+
+<button type="submit">Reveal My Nail Match 💅</button>
+
+</form>
+
+</section>
+
+<section id="results" class="hidden">
+
+<h2 id="personality"></h2>
+
+<p id="description"></p>
+
+<h3>Your closest collection match</h3>
+
+<div class="card">
+
+<div class="art">✿ Velvet ✿</div>
+
+<h2 id="setname">Velvet Desire</h2>
+
+<p id="setdescription">Burgundy and nude stiletto nails with pearls, 3D flowers and marbled details.</p>
+
+<p class="price" id="price">₦13,000</p>
+
+<p>Application kit included 💗</p>
+
+<button onclick="orderCollection()">Ask to Order This Set</button>
+
+</div>
+
+<div class="card">
+
+<h3>Your Custom Design Idea ✨</h3>
+
+<p id="custom"></p>
+
+<p class="small">Custom design availability and pricing must be confirmed with Tee.</p>
+
+<button onclick="orderCustom()">Ask Tee About My Custom Design</button>
+
+</div>
+
+</section>
+
+<section id="collection">
+
+<h2>Our Collection 💅</h2>
+
+<div class="card">
+
+<div class="art">🌹 ✨ 🌹</div>
+
+<h3>Velvet Desire</h3>
+
+<p>Burgundy, nude, pearls and 3D floral details. For the romantic girl with a bold side.</p>
+
+<p class="price">₦13,000</p>
+
+<p>Application kit included.</p>
+
+<button onclick="orderCollection()">Enquire on WhatsApp</button>
+
+</div>
+
+<div class="card">
+
+<h3>Quiet Luxury</h3>
+
+<p>Elegant neutrals and a clean, glossy finish.</p>
+
+<button onclick="askSet('Quiet Luxury')">Ask About This Set</button>
+
+</div>
+
+<div class="card">
+
+<h3>Midnight Muse</h3>
+
+<p>A dramatic, confident look with dark tones.</p>
+
+<button onclick="askSet('Midnight Muse')">Ask About This Set</button>
+
+</div>
+
+</section>
+
+</main>
+
+<footer style="text-align:center;padding:20px">Made with love by Nails by Tee 💗</footer>
+
+<script>
+
+/* Add your WhatsApp business number below using country code 234, digits only. */
+
+const WHATSAPP_NUMBER = "";
+
+let customMessage = "";
+
+function order(message){
+
+ if(!WHATSAPP_NUMBER){
+
+  alert("WhatsApp ordering needs Tee's business number to be added to the website first.");
+
+  return;
+
+ }
+
+ window.open("https://wa.me/"+WHATSAPP_NUMBER+"?text="+encodeURIComponent(message),"_blank");
+
+}
+
+function orderCollection(){
+
+ order("Hi Nails by Tee! I'd like to order Velvet Desire for ₦13,000. Please confirm availability. I understand the application kit is included.");
+
+}
+
+function orderCustom(){order("Hi Nails by Tee! I'd like to discuss this custom design: "+customMessage);}
+
+function askSet(name){order("Hi Nails by Tee! Please tell me the price and availability of "+name+".");}
+
+document.getElementById("form").addEventListener("submit",function(e){
+
+ e.preventDefault();
+
+ const mood=document.getElementById("mood").value;
+
+ const colour=document.getElementById("colour").value;
+
+ const shape=document.getElementById("shape").value;
+
+ const length=document.getElementById("length").value;
+
+ const details=document.getElementById("details").value;
+
+ const names={romantic:"The Romantic Muse",luxury:"The Luxe Girl",bold:"The Statement Maker",playful:"The Playful Creative",minimal:"The Quiet Icon"};
+
+ document.getElementById("personality").textContent="Your vibe: "+names[mood];
+
+ document.getElementById("description").textContent="Your choices suggest a "+mood+" aesthetic, with "+colour.toLowerCase()+", "+length.toLowerCase()+" nails in a "+shape.toLowerCase()+" shape.";
+
+ let set="Quiet Luxury",desc="Elegant neutrals and a glossy finish.",price="Price on request";
+
+ if(mood==="romantic"||mood==="luxury"||colour==="Burgundy and nude"){
+
+ set="Velvet Desire";desc="Burgundy, nude, pearls and 3D floral details. Application kit included.";price="₦13,000";
+
+ }else if(mood==="bold"||colour==="Black and silver"){set="Midnight Muse";desc="A dramatic dark set for a confident statement.";}
+
+ document.getElementById("setname").textContent=set;
+
+ document.getElementById("setdescription").textContent=desc;
+
+ document.getElementById("price").textContent=price;
+
+ customMessage="Vibe: "+mood+"; colours: "+colour+"; shape: "+shape+"; length: "+length+"; details: "+(details||"none specified");
+
+ document.getElementById("custom").textContent="A "+length.toLowerCase()+" "+shape.toLowerCase()+" set in "+colour.toLowerCase()+", designed around your "+mood+" personality."+(details?" Include: "+details+".":"");
+
+ document.getElementById("results").classList.remove("hidden");
+
+ document.getElementById("results").scrollIntoView({behavior:"smooth"});
+
+});
+
+</script>
+
+</body>
+
+</html>
